@@ -1,0 +1,54 @@
+body {
+  background-color: rgb(107, 60, 60);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.calcContainer {
+  background-color: blanchedalmond;
+  width: 400px;
+  height: 436px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0;
+}
+
+.clearDeleteContainer {
+  padding: 10px 0 10px;
+  align-self: center;
+  display: flex;
+  gap: 20px;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-around;
+}
+.numbersContainer {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.operationsContainer {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+}
+.display {
+  background-color: rgb(167, 197, 176);
+  height: 100px;
+  font-size: 50px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 10px;
+}
+
+button {
+  font-family: inherit;
+  font-size: 40px;
+}
