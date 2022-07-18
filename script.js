@@ -44,11 +44,24 @@ numBtn.forEach(function (button) {
 
 operatorBtn.forEach(function (button) {
   button.addEventListener("click", function (e) {
-    prevDisplay.append(operandValue);
-    prevDisplay.append(e.target.innerText);
-    currDisplay.textContent = "";
-    operatorValue = e.target.id;
-    firstOperand = operandValue;
-    operandValue = "";
+    if (operandValue !== "" && firstOperand !== "") {
+      prevDisplay.textContent = "";
+      currDisplay.textContent = "";
+      result = operate(operatorValue, firstOperand, operandValue);
+      firstOperand = result;
+      operandValue = "";
+      prevDisplay.textContent = result;
+      operatorValue = e.target.id;
+      prevDisplay.append(e.target.innerText);
+    } else if (operandValue == "" && firstOperand !== "") {
+      return;
+    } else {
+      prevDisplay.append(operandValue);
+      prevDisplay.append(e.target.innerText);
+      currDisplay.textContent = "";
+      operatorValue = e.target.id;
+      firstOperand = operandValue;
+      operandValue = "";
+    }
   });
 });
