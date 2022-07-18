@@ -24,3 +24,31 @@ function operate(operator, num, ber) {
       return "mf uuuuhhhh";
   }
 }
+
+let operandValue = "";
+let operatorValue = null;
+let firstOperand = "";
+
+let display = document.querySelector(".display");
+let currDisplay = document.querySelector(".currentCalculation");
+let prevDisplay = document.querySelector(".previousCalculation");
+let numBtn = document.querySelectorAll(".numBtn");
+let operatorBtn = document.querySelectorAll(".operator");
+
+numBtn.forEach(function (button) {
+  button.addEventListener("click", function (e) {
+    currDisplay.append(e.target.innerText);
+    operandValue += e.target.innerText;
+  });
+});
+
+operatorBtn.forEach(function (button) {
+  button.addEventListener("click", function (e) {
+    prevDisplay.append(operandValue);
+    prevDisplay.append(e.target.innerText);
+    currDisplay.textContent = "";
+    operatorValue = e.target.id;
+    firstOperand = operandValue;
+    operandValue = "";
+  });
+});
