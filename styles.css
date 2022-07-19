@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: rgb(107, 60, 60);
+  background-color: rgb(51, 46, 46);
   height: 100%;
   display: flex;
   justify-content: center;
@@ -10,7 +10,7 @@ body {
 }
 
 .calcContainer {
-  background-color: blanchedalmond;
+  background-color: rgb(109, 78, 78);
   width: 400px;
   height: 436px;
   display: flex;
@@ -41,7 +41,7 @@ body {
   flex-direction: column;
 }
 .display {
-  background-color: rgb(167, 197, 176);
+  background-color: blanchedalmond;
   height: 100px;
   font-size: 30px;
   display: flex;

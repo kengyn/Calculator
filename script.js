@@ -1,5 +1,5 @@
 function add(num, ber) {
-  return num + ber;
+  return +num + +ber;
 }
 function multiply(num, ber) {
   return num * ber;
@@ -32,8 +32,6 @@ let operandValue = "";
 let operatorValue = null;
 let firstOperand = "";
 
-let calc = document.querySelector(".calcContainer");
-let display = document.querySelector(".display");
 let currDisplay = document.querySelector(".currentCalculation");
 let prevDisplay = document.querySelector(".previousCalculation");
 let numBtn = document.querySelectorAll(".numBtn");
@@ -44,7 +42,7 @@ let clearBtn = document.querySelector(".clear");
 let deleteBtn = document.querySelector(".delete");
 
 dotBtn.addEventListener("click", (e) => {
-  if (operandValue.includes(".")) {
+  if (operandValue.toString().includes(".")) {
     return;
   } else {
     currDisplay.append(e.target.innerText);
@@ -64,17 +62,16 @@ numBtn.forEach(function (button) {
 
 operatorBtn.forEach(function (button) {
   button.addEventListener("click", function (e) {
+    //??????????
     if (operandValue == "" && firstOperand == "" && operatorValue == null) {
       return;
     }
     //if there are values in the calculator and an operator is pressed
     //clear display, calculate, and add result to previous display with the operand
     if (operandValue !== "" && firstOperand !== "") {
-      prevDisplay.textContent = "";
-      currDisplay.textContent = "";
       result = operate(operatorValue, firstOperand, operandValue);
+      clear();
       firstOperand = result;
-      operandValue = "";
       prevDisplay.textContent = result;
       operatorValue = e.target.id;
       prevDisplay.append(e.target.innerText);
@@ -95,25 +92,26 @@ operatorBtn.forEach(function (button) {
 
 equalsBtn.addEventListener("click", function () {
   if (operandValue !== "" && operatorValue !== null && firstOperand !== "") {
-    prevDisplay.textContent = "";
-    currDisplay.textContent = "";
     result = operate(operatorValue, firstOperand, operandValue);
-    firstOperand = "";
+    clear();
     operandValue = result;
-    operatorValue = null;
     currDisplay.textContent = result;
   }
 });
 
 clearBtn.addEventListener("click", () => {
-  prevDisplay.textContent = "";
-  currDisplay.textContent = "";
-  firstOperand = "";
-  operandValue = "";
-  operatorValue = null;
+  clear();
 });
 
 deleteBtn.addEventListener("click", () => {
   operandValue = operandValue.slice(0, -1);
   currDisplay.textContent = operandValue;
 });
+
+let clear = function () {
+  prevDisplay.textContent = "";
+  currDisplay.textContent = "";
+  firstOperand = "";
+  operandValue = "";
+  operatorValue = null;
+};
