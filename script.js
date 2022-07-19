@@ -8,6 +8,9 @@ function subtract(num, ber) {
   return num - ber;
 }
 function divide(num, ber) {
+  if (num !== 0 && ber == 0) {
+    return "bruh";
+  }
   return num / ber;
 }
 function operate(operator, num, ber) {
@@ -29,6 +32,7 @@ let operandValue = "";
 let operatorValue = null;
 let firstOperand = "";
 
+let calc = document.querySelector(".calcContainer");
 let display = document.querySelector(".display");
 let currDisplay = document.querySelector(".currentCalculation");
 let prevDisplay = document.querySelector(".previousCalculation");
@@ -50,6 +54,9 @@ dotBtn.addEventListener("click", (e) => {
 
 numBtn.forEach(function (button) {
   button.addEventListener("click", function (e) {
+    if (operandValue.length >= 21) {
+      return console.log("bro please");
+    }
     currDisplay.append(e.target.innerText);
     operandValue += e.target.innerText;
   });
@@ -91,9 +98,8 @@ equalsBtn.addEventListener("click", function () {
     prevDisplay.textContent = "";
     currDisplay.textContent = "";
     result = operate(operatorValue, firstOperand, operandValue);
-    operandValue = result;
     firstOperand = "";
-    operandValue = "";
+    operandValue = result;
     operatorValue = null;
     currDisplay.textContent = result;
   }
